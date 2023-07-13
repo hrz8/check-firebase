@@ -3,12 +3,14 @@ dotenv.config();
 
 import express from 'express';
 import upload from 'express-fileupload';
+import cors from 'cors';
 
 import { storage } from './firebase.js';
 import { ref, uploadBytes, getDownloadURL, uploadString } from "firebase/storage";
 
 const app = express();
 
+app.use(cors());
 app.use(upload());
 app.use(express.json());
 app.use(express.urlencoded({
