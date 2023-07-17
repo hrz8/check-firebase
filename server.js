@@ -60,6 +60,6 @@ app.post('/upload', async function(req, res) {
     });
 });
 
-app.listen(3006, function() {
-    console.info('server start in port 3006');
+app.listen(process.env.PORT, function() {
+    console.info(`server start in port ${process.env.PORT}`);
 });
