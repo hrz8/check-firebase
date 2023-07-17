@@ -12,7 +12,7 @@ function App() {
     const formData  = new FormData();
     formData.append('image', image);
 
-    await fetch('http://localhost:3006/upload', {
+    await fetch('https://server-upload-development.up.railway.app/upload', {
       method: 'POST',
       body: formData,
     });
