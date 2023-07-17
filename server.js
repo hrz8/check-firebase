@@ -19,6 +19,7 @@ app.use(express.urlencoded({
 
 app.post('/upload', async function(req, res) {
     if (!req.files || !req.files?.image) {
+        console.error('no image file found');
         res.status(400);
         res.json({
             ok: false,
@@ -28,6 +29,7 @@ app.post('/upload', async function(req, res) {
     }
 
     if (req.files.image.mimetype !== 'image/jpeg' || req.files.image.size > 1000000) {
+        console.error('unsupported file type or size');
         res.status(400);
         res.json({
             ok: false,
@@ -53,6 +55,8 @@ app.post('/upload', async function(req, res) {
     });
 
     const url = await getDownloadURL(uploaded.ref);
+
+    console.info(`file successfully uploaded on this url: ${url}`)
 
     res.json({
         ok: true,
